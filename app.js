@@ -57,6 +57,8 @@ app.post('/photos', async (req, res) => {
   });
 });
 
+//* Upload Photo with exress.fileUpload
+
 app.get('/photos/:id', async (req, res) => {
   // res.render('add');
   //console.log(req.params.id)   // gönderilen id'yi yakalayıp yazdırıyoruz
@@ -66,7 +68,11 @@ app.get('/photos/:id', async (req, res) => {
   });
 });
 
-//* Express File Upload
+//* Edit Photo
+app.get('/photos/edit/:id', async (req, res) => {
+  const photo = await Photo.findOne({ _id: req.params.id });
+  res.render('edit', { photo });
+});
 
 const port = 3000;
 
